@@ -15,3 +15,11 @@ feat(auth): implement JWT authentication and project setup
 - Implement authentication and authorization using JWT
 - Add middleware for error handling
 - Add sign-up and login routes with validation
+
+//Moze byc problem ze userid nie wysylam dobrze. Ze zamiast req.user.userId mam req.userId
+
+feat(posts): implement routes for posts CRUD
+
+- Change Users route for Auth route
+- Add users role informations in JWT
+- Create methods to check users permission

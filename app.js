@@ -7,7 +7,7 @@ const qr = require("./db/queries");
 // const LocalStrategy = require("passport-local").Strategy;
 // const bcrypt = require("bcryptjs");
 const routerPosts = require("./routes/posts");
-const routerUsers = require("./routes/users");
+const routerAuth = require("./routes/auth");
 const errorHandler = require("./controllers/errorHandler");
 
 const app = express();
@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/posts", routerPosts);
-app.use("/users", routerUsers);
+app.use("/auth", routerAuth);
 
 app.use(errorHandler);
 app.listen(3000, () => console.log("Server started!"));

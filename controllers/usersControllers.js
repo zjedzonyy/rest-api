@@ -52,7 +52,7 @@ async function loginUser(req, res, next) {
     // Create JWT
     const secret = process.env.JWT_KEY;
     const token = jwt.sign({ userId: user.id }, secret, {
-      expiresIn: "1h",
+      expiresIn: "360h",
     });
     res.status(200).json({
       message: "Authentication successfull",

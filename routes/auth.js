@@ -4,8 +4,8 @@ const router = express.Router();
 const validators = require("../validators/validators");
 
 // REGISTER USER
-router.post("/", validators.validationSignUp, usersControllers.user);
+router.post("/register", validators.validationSignUp, usersControllers.user);
 
-// LOG IN
+// LOGIN USER
 router.post("/login", validators.validationLogin, usersControllers.loginUser);
 module.exports = router;
