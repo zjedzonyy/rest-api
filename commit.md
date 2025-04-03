@@ -23,3 +23,13 @@ feat(posts): implement routes for posts CRUD
 - Change Users route for Auth route
 - Add users role informations in JWT
 - Create methods to check users permission
+
+feat(routes): finilize API
+
+- Add methods and queries for Comment and Post routes
+- Implement relation between Comment and Post models
+
+feat(routes): finalize API for comments and posts
+
+- Add methods and queries for Comment and Post routes
+- Implement relationships between Comment and Post models

@@ -18,7 +18,7 @@ async function verifyToken(req, res, next) {
     req.user = { id: decoded.userId, role: user };
     next();
   } catch (error) {
-    res.status(401).json({ error: "Invalid token" });
+    res.status(401).json({ error: "Token's valid but something went wrong" });
   }
 }
 
@@ -41,5 +41,11 @@ function authorizeRoles(requiredRole) {
     next();
   };
 }
+
+// function identifyRole(req, res, next) {
+//   if (req.user) {
+//     req.user.role =
+//   }
+// }
 
 module.exports = { verifyToken, authorizeRoles };

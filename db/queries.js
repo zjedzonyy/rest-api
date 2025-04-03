@@ -25,6 +25,16 @@ async function createPost(title, body, authorId) {
   });
 }
 
+async function editPost(postId, title, body) {
+  await prisma.post.update({
+    where: { id: postId },
+    data: {
+      title: title,
+      body: body,
+    },
+  });
+}
+
 async function publishPost(postId) {
   const post = await prisma.post.update({
     where: { id: postId },
@@ -70,6 +80,56 @@ async function getRole(userId) {
   return user.role;
 }
 
+async function getPost(postId) {
+  const post = await prisma.post.findUnique({
+    where: { id: postId },
+  });
+
+  return post;
+}
+
+async function deletePost(postId) {
+  await prisma.post.delete({
+    where: { id: postId },
+  });
+}
+
+async function createComment(postId, body, authorId) {
+  await prisma.comment.create({
+    data: {
+      body: body,
+      authorId: authorId,
+      postId: postId,
+    },
+  });
+}
+
+async function getComments(postId) {
+  const comments = await prisma.comment.findMany({
+    where: {
+      postId: postId,
+    },
+  });
+
+  return comments;
+}
+
+async function getComment(commentId) {
+  console.log(commentId);
+  const comment = await prisma.comment.findUnique({
+    where: { id: commentId },
+  });
+
+  return comment;
+}
+
+async function deleteComment(commentId) {
+  await prisma.comment.delete({
+    where: {
+      id: commentId,
+    },
+  });
+}
 module.exports = {
   getAllPublicPosts,
   createUser,
@@ -77,6 +137,13 @@ module.exports = {
   getUserByUsername,
   createPost,
   publishPost,
-  getRole,
   getAllPosts,
+  getPost,
+  getRole,
+  editPost,
+  deletePost,
+  createComment,
+  getComments,
+  getComment,
+  deleteComment,
 };
