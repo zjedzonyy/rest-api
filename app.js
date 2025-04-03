@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("node:path");
 const passport = require("passport");
 const qr = require("./db/queries");
+const cors = require("cors");
 // const LocalStrategy = require("passport-local").Strategy;
 // const bcrypt = require("bcryptjs");
 const routerPosts = require("./routes/posts");
@@ -16,6 +17,12 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");

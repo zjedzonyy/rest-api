@@ -4,6 +4,11 @@ const prisma = new PrismaClient();
 async function getAllPublicPosts() {
   const posts = await prisma.post.findMany({
     where: { public: true },
+    include: {
+      author: {
+        select: { username: true },
+      },
+    },
   });
 
   return posts;
@@ -130,6 +135,14 @@ async function deleteComment(commentId) {
     },
   });
 }
+
+async function getAuthor(authorId) {
+  const username = await prisma.user.findUnique({
+    where: { id: authorId },
+  });
+
+  return username;
+}
 module.exports = {
   getAllPublicPosts,
   createUser,
@@ -146,4 +159,5 @@ module.exports = {
   getComments,
   getComment,
   deleteComment,
+  getAuthor,
 };

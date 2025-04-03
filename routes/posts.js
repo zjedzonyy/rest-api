@@ -63,4 +63,6 @@ router.delete(
   postsControllers.deleteComment
 );
 
+// // GET INFO ABOUT USER
+// router.get("/user", authController.verifyToken, postsControllers.getUser);
 module.exports = router;

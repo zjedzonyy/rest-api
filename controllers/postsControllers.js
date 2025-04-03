@@ -131,6 +131,7 @@ async function getComments(req, res, next) {
     next(error);
   }
 }
+
 module.exports = {
   posts,
   createPost,
