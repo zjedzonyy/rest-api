@@ -88,6 +88,11 @@ async function getRole(userId) {
 async function getPost(postId) {
   const post = await prisma.post.findUnique({
     where: { id: postId },
+    include: {
+      author: {
+        select: { username: true },
+      },
+    },
   });
 
   return post;
@@ -113,6 +118,11 @@ async function getComments(postId) {
   const comments = await prisma.comment.findMany({
     where: {
       postId: postId,
+    },
+    include: {
+      author: {
+        select: { username: true },
+      },
     },
   });
 

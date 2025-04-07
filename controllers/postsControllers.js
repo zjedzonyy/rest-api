@@ -89,7 +89,7 @@ async function deleteComment(req, res, next) {
     const commentId = req.params.commentId;
     const comment = await qr.getComment(commentId);
 
-    if (comment.id !== req.user.id && req.user.role !== "ADMIN") {
+    if (comment.authorId !== req.user.id && req.user.role !== "ADMIN") {
       res.status(403).json({ message: "You don't have required prermissions" });
     } else {
       await qr.deleteComment(commentId);
